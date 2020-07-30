@@ -1,0 +1,25 @@
+{
+  "name": "node-temperature-converter",
+  "version": "1.0.1",
+  "description": "Simple package to convert temperatures.",
+  "main": "index.js",
+  "scripts": {
+    "test": "cd test && node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Project-IX/ntc.git"
+  },
+  "keywords": [
+    "temperature",
+    "temperature-converter",
+    "nodejs-temperature",
+    "ntc"
+  ],
+  "author": "Project-IX",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Project-IX/ntc/issues"
+  },
+  "homepage": "https://github.com/Project-IX/ntc#readme"
+}
