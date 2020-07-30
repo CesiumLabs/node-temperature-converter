@@ -4,7 +4,7 @@ Simple package for node to convert temperature.
 # Example
 
 ```js
-const Converter = require("../index");
+const Converter = require("node-temperature-converter");
 
 // celsius
 const celsius = new Converter.Celsius(35);
