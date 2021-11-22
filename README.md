@@ -4,80 +4,26 @@ Simple package for node to convert temperature.
 # Example
 
 ```js
-const Converter = require("node-temperature-converter");
+const { convertTemprature } = require('./');
+// for typescript => import convertTemprature from "node-temperature-converter";
 
-// celsius
-const celsius = new Converter.Celsius(35);
+// Get numerical temprature
+convertTemprature("13f", 'celcius') // output => -10.56
 
-const obc = {
-    name: "Celsius",
-    deg: celsius.degrees,
-    fah: celsius.toFahrenheit(),
-    kel: celsius.toKelvin(),
-    str: celsius.toString(),
-};
-console.table(obc);
+// Get string version or temprature with unit
+convertTemprature("13f", 'celcius', true) // output => -10.56C
 
-/*
-Expected Output:
-┌───────┬───────────┐
-│ (idx) │  Values   │
-├───────┼───────────┤
-│ name  │ "Celsius" │
-│  deg  │    35     │
-│  fah  │    95     │
-│  kel  │  308.15   │
-│  str  │  "35°C"   │
-└───────┴───────────┘
-*/
+// The first parameter is the degree
+const validDegree = [
+    12, "12", "12p", "12c", "12celcius", // no unit or invalid unit will be considered as Celcius
+    "12k", "12kelvin", "12kek", // anything starts with k will be considered as Kelvin
+    "12f", "12fahrenheit", "12fall", // anything starts with f will be considered as Fahrenheit
+]
 
-// fahrenheit
-const fahrenheit = new Converter.Fahrenheit(95);
+// The second parameter is the unit in which you want to convert the temprature
+const validUnits = ['celcius', 'fahrenheit', 'kelvin', 'c', 'f', 'k'];
 
-const obf = {
-    name: "Fahrenheit",
-    deg: fahrenheit.degrees,
-    cel: fahrenheit.toCelsius(),
-    kel: fahrenheit.toKelvin(),
-    str: fahrenheit.toString(),
-};
-console.table(obf);
-
-/* 
-Expected Output:
-┌───────┬──────────────┐
-│ (idx) │    Values    │
-├───────┼──────────────┤
-│ name  │ "Fahrenheit" │
-│  deg  │      95      │
-│  cel  │      35      │
-│  kel  │    308.15    │
-│  str  │    "95°F"    │
-└───────┴──────────────┘
-*/
-
-// kelvin
-const kelvin = new Converter.Kelvin(308.15);
-
-const obk = {
-    name: "Kelvin",
-    deg: kelvin.degrees,
-    cel: kelvin.toCelsius(),
-    fah: kelvin.toFahrenheit(),
-    str: kelvin.toString(),
-};
-console.table(obk);
-
-/* 
-Expected Output:
-┌───────┬───────────┐
-│ (idx) │  Values   │
-├───────┼───────────┤
-│ name  │ "Kelvin"  │
-│  deg  │  308.15   │
-│  cel  │    35     │
-│  fah  │    95     │
-│  str  │ "308.15K" │
-└───────┴───────────┘
-*/
+// Thrid parameter is boolean type
+true // returns stringified value like 120C
+false // returns numerical value like 120
 ```
